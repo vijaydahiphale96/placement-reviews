@@ -10,11 +10,51 @@
     width: 95%;
   }
 
+  .website-title-container {
+    padding: 8px;
+    text-align: center;
+
+    .website-title-text {
+      font-size: 30px;
+      color: #614840;
+      font-weight: 500;
+    }
+  }
+
   .toolbar-container {
     background: linear-gradient(0deg, #30a8d4, #65c1e2);
     height: 40px;
     width: 100%;
+    border-radius: 4px;
+
+    .toolbar-item {
+      padding: 10px 20px;
+      border-radius: 3px;
+      font-weight: 500;
+
+      .menu-link {
+        color: white;
+        text-decoration: none;
+      }
+
+      @media only screen and (max-width: 520px) {
+        padding: 10px 10px;
+      }
+
+      &:hover {
+        background-color: #614840;
+      }
+    }
+
+    .menu-icon-container {
+      padding: 0px 10px !important;
+
+      .menu-icon {
+        width: 35px;
+      }
+    }
   }
+
 
 
 }

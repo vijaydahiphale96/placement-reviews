@@ -4,7 +4,7 @@ import { MainRoutes } from './shared/enums/routes.enum';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: MainRoutes.DASHBOARD, pathMatch: 'full'},
+  { path: '', redirectTo: MainRoutes.DASHBOARD, pathMatch: 'full' },
   {
     path: MainRoutes.DASHBOARD,
     loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)

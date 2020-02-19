@@ -1,7 +1,33 @@
 <div class="main-container">
-  <!-- toolbar -->
-  <div class="toolbar-container">
+  <!-- Website Title -->
+  <div class="website-title-container">
+    <span class="website-title-text">
+      Campus Placement Reviews
+    </span>
+  </div>
 
+  <!-- toolbar -->
+  <div class="toolbar-container flex-row-container">
+
+    <!-- To Do : Change to Dynamic Object -->
+    <div class="toolbar-item cursor-pointer">
+      <a class="menu-link" [routerLink]="MainRoutes.HOME">Home</a>
+    </div>
+    <div class="toolbar-item cursor-pointer">
+      <a class="menu-link" [routerLink]="MainRoutes.DASHBOARD">Dashboard</a>
+    </div>
+    <div class="toolbar-item cursor-pointer">
+      <a class="menu-link" [routerLink]="MainRoutes.COMPANIES">Campanies</a>
+    </div>
+
+    <!-- Static Menus -->
+    <div class="flex-grow-full"></div>
+    <div class="toolbar-item cursor-pointer">
+      <a class="menu-link" [routerLink]="MainRoutes.COMPANIES">Sign In</a>
+    </div>
+    <div class="toolbar-item menu-icon-container cursor-pointer">
+      <img class="menu-icon" src="/assets/images/menu-24px.svg" alt="menu-icon">
+    </div>
   </div>
   <router-outlet></router-outlet>
 </div>
