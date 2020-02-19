@@ -10,13 +10,13 @@
   <div class="toolbar-container flex-row-container">
 
     <!-- To Do : Change to Dynamic Object -->
-    <div class="toolbar-item cursor-pointer">
+    <div class="toolbar-item cursor-pointer" [class.active-menu]="selectedMenu === MainRoutes.HOME">
       <a class="menu-link" [routerLink]="MainRoutes.HOME">Home</a>
     </div>
-    <div class="toolbar-item cursor-pointer">
+    <div class="toolbar-item cursor-pointer" [class.active-menu]="selectedMenu === MainRoutes.DASHBOARD">
       <a class="menu-link" [routerLink]="MainRoutes.DASHBOARD">Dashboard</a>
     </div>
-    <div class="toolbar-item cursor-pointer">
+    <div class="toolbar-item cursor-pointer" [class.active-menu]="selectedMenu === MainRoutes.COMPANIES">
       <a class="menu-link" [routerLink]="MainRoutes.COMPANIES">Campanies</a>
     </div>
 
