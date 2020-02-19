@@ -23,7 +23,6 @@
 
   .toolbar-container {
     background: linear-gradient(0deg, #30a8d4, #65c1e2);
-    height: 40px;
     width: 100%;
     border-radius: 4px;
 
@@ -31,11 +30,6 @@
       padding: 10px 20px;
       border-radius: 3px;
       font-weight: 500;
-
-      .menu-link {
-        color: white;
-        text-decoration: none;
-      }
 
       @media only screen and (max-width: 520px) {
         padding: 10px 10px;
@@ -46,11 +40,18 @@
       }
     }
 
+    .menu-link {
+      color: white;
+      text-decoration: none;
+    }
+
     .menu-icon-container {
       padding: 0px 10px !important;
 
       .menu-icon {
-        width: 35px;
+        width: 36px;
+        display: block;
+        padding: 2px 0px;
       }
     }
   }

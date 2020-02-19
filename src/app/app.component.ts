@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MainRoutes } from './shared/enums/routes.enum';
-import { Router, NavigationStart, NavigationEnd, RouterEvent } from '@angular/router';
+import { Router, NavigationStart, RouterEvent } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,8 @@ export class AppComponent implements OnInit, OnDestroy {
   MainRoutes = MainRoutes;
   selectedMenu: string;
 
+  routerEventSubcribtion: Subscription;
+
   constructor(
     private router: Router
   ) { }
@@ -21,7 +24,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   getRouterEventSubcribtion() {
-    this.router.events.subscribe((eventData: RouterEvent) => {
+    this.routerEventSubcribtion = this.router.events.subscribe((eventData: RouterEvent) => {
       if (eventData instanceof NavigationStart) {
         this.setActiveMenu(eventData);
       }
@@ -39,5 +42,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() { }
+  ngOnDestroy() {
+    this.routerEventSubcribtion.unsubscribe();
+  }
 }
