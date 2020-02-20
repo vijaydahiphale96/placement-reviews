@@ -6,13 +6,42 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { UserDataService } from '../services/user-data.service';
+import { Router } from '@angular/router';
+import { MainRoutes } from '../enums/routes.enum';
+import { HeaderKeys, HeaderKeyValues } from '../enums/headers.enum';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(
+    private router: Router,
+    private userDataService: UserDataService
+  ) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return next.handle(request);
+    if (request.headers.get(HeaderKeys.AUTH) === HeaderKeyValues.AUTH_TRUE) {
+
+      if (this.userDataService.accessToken) {
+        const clonedRequest = request.clone({
+          headers: request.headers.set(HeaderKeys.ACCESS_TOKEN, this.userDataService.accessToken)
+        });
+        return next.handle(clonedRequest).pipe(tap(
+          succ => { },
+          err => {
+            // TODO: Add status code of Logout
+            // if (err.status === 401) {
+            //   this.router.navigateByUrl(MainRoutes.HOME);
+            // }
+          }
+        ));
+      } else {
+        this.router.navigateByUrl(MainRoutes.HOME);
+      }
+
+    } else {
+      return next.handle(request);
+    }
   }
 }

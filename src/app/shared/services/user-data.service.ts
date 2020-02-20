@@ -14,7 +14,14 @@ export class UserDataService {
     return parseInt(this.cookieService.get('userId'), 10);
   }
   public set userId(value: number) {
-    this.cookieService.set('userId', value + '', 365, '/');
+    this.cookieService.set('userId', value.toString(), 365, '/');
+  }
+
+  public get isAdmin(): boolean {
+    return (this.cookieService.get('isAdmin') === 'true');
+  }
+  public set isAdmin(value: boolean) {
+    this.cookieService.set('isAdmin', value.toString(), 365, '/');
   }
 
   public get accessToken(): string {
