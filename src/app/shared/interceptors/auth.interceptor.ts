@@ -22,24 +22,10 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if (request.headers.get(HeaderKeys.AUTH) === HeaderKeyValues.AUTH_TRUE) {
-
-      if (this.userDataService.accessToken) {
-        const clonedRequest = request.clone({
-          headers: request.headers.set(HeaderKeys.ACCESS_TOKEN, this.userDataService.accessToken)
-        });
-        return next.handle(clonedRequest).pipe(tap(
-          succ => { },
-          err => {
-            // TODO: Add status code of Logout
-            // if (err.status === 401) {
-            //   this.router.navigateByUrl(MainRoutes.HOME);
-            // }
-          }
-        ));
-      } else {
-        this.router.navigateByUrl(MainRoutes.HOME);
-      }
-
+      const clonedRequest = request.clone({
+        headers: request.headers.set(HeaderKeys.ACCESS_TOKEN, this.userDataService.accessToken)
+      });
+      return next.handle(clonedRequest);
     } else {
       return next.handle(request);
     }
