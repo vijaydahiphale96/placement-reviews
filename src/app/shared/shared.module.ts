@@ -18,12 +18,12 @@ import { CookieService } from 'ngx-cookie-service';
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
+      useClass: ErrorHandlerInterceptor,
       multi: true
     },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: ErrorHandlerInterceptor,
+      useClass: AuthInterceptor,
       multi: true
     }
   ],
