@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainRoutes } from './shared/enums/routes.enum';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 
 const routes: Routes = [
   { path: '', redirectTo: MainRoutes.DASHBOARD, pathMatch: 'full' },
   {
     path: MainRoutes.DASHBOARD,
+    canActivate: [AuthGuard],
     loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   {

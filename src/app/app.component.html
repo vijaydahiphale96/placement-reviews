@@ -11,19 +11,22 @@
 
     <!-- To Do : Change to Dynamic Object -->
     <a class="menu-link" [routerLink]="MainRoutes.HOME">
-      <div class="toolbar-item cursor-pointer" [class.active-menu]="selectedMenu === MainRoutes.HOME">
+      <div class="toolbar-item cursor-pointer"
+        [class.active-menu]="commonObjectService.currentlySelectedMenu === MainRoutes.HOME">
         Home
       </div>
     </a>
 
     <a class="menu-link" [routerLink]="MainRoutes.DASHBOARD">
-      <div class="toolbar-item cursor-pointer" [class.active-menu]="selectedMenu === MainRoutes.DASHBOARD">
+      <div class="toolbar-item cursor-pointer"
+        [class.active-menu]="commonObjectService.currentlySelectedMenu === MainRoutes.DASHBOARD">
         Dashboard
       </div>
     </a>
 
     <a class="menu-link" [routerLink]="MainRoutes.COMPANIES">
-      <div class="toolbar-item cursor-pointer" [class.active-menu]="selectedMenu === MainRoutes.COMPANIES">
+      <div class="toolbar-item cursor-pointer"
+        [class.active-menu]="commonObjectService.currentlySelectedMenu === MainRoutes.COMPANIES">
         Campanies
       </div>
     </a>
