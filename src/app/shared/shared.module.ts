@@ -4,6 +4,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ErrorHandlerInterceptor } from './interceptors/error-handler.interceptor';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -13,6 +14,7 @@ import { ErrorHandlerInterceptor } from './interceptors/error-handler.intercepto
     CommonModule
   ],
   providers: [
+    CookieService,
     AuthGuard,
     {
       provide: HTTP_INTERCEPTORS,

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { MainRoutes } from '../enums/routes.enum';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommonObjectService {
 
-  currentlySelectedMenu: string;
+  currentlySelectedMenu: string = MainRoutes.DASHBOARD;
 
   constructor() { }
 }
