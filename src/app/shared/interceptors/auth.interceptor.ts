@@ -21,7 +21,7 @@ export class AuthInterceptor implements HttpInterceptor {
   ) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    if (request.headers.get(HeaderKeys.AUTH) === HeaderKeyValues.AUTH_TRUE) {
+    if (request.headers.get(HeaderKeys.AUTH) === HeaderKeyValues.BOOLEAN_TRUE) {
       const clonedRequest = request.clone({
         headers: request.headers.set(HeaderKeys.ACCESS_TOKEN, this.userDataService.accessToken)
       });

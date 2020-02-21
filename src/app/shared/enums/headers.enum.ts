@@ -1,8 +1,10 @@
 export enum HeaderKeys {
   AUTH = 'auth',
-  ACCESS_TOKEN = 'accessToken'
+  ACCESS_TOKEN = 'accessToken',
+  SHOW_LOADER = 'showLoader'
 }
 
 export enum HeaderKeyValues {
-  AUTH_TRUE = 'True'
+  BOOLEAN_TRUE = 'True',
+  BOOLEAN_FALSE = 'False'
 }
