@@ -5,13 +5,15 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ErrorHandlerInterceptor } from './interceptors/error-handler.interceptor';
 import { CookieService } from 'ngx-cookie-service';
+import { CommonDialogModule } from './modules/common-dialog/common-dialog.module';
 
 
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    CommonDialogModule
   ],
   providers: [
     CookieService,

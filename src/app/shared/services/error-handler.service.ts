@@ -4,6 +4,8 @@ import { BaseResponse } from '../models/base-response.model';
 import { Router } from '@angular/router';
 import { MainRoutes } from '../enums/routes.enum';
 import { UserDataService } from './user-data.service';
+import { CommonMatDialogService } from './common-mat-dialog.service';
+import { ModalTypes } from '../enums/modal-types.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -12,18 +14,19 @@ export class ErrorHandlerService {
 
   constructor(
     private router: Router,
-    private userDataService: UserDataService
+    private userDataService: UserDataService,
+    private commonMatDialogService: CommonMatDialogService
   ) { }
 
   handleSuccessError(successResponse: HttpResponse<BaseResponse>) {
     if (successResponse.body.hasError) {
-      // TODO: Add unauthorize statatu Code
+      // TODO: Add unauthorize status Code
       if (successResponse.body.errors[0].code === 0) {
         this.logout();
         this.router.navigateByUrl(MainRoutes.HOME)
       }
       // TODO: Decrease Loader Count if SHOW_LOADER = True
-      // TODO: Open Error Modal
+      this.commonMatDialogService.openCommonDialog(successResponse.body.errors[0].message, ModalTypes.ERROR);
     }
   }
 
@@ -33,7 +36,7 @@ export class ErrorHandlerService {
       this.logout();
       this.router.navigateByUrl(MainRoutes.HOME)
     }
-    // TODO: Open Error Modal
+    this.commonMatDialogService.openCommonDialog('Server was unable to handle the request', ModalTypes.ERROR);
   }
 
   logout() {
