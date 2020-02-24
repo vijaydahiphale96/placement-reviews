@@ -35,8 +35,8 @@ export class AppComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.getRouterEventSubcribtion();
     this.menuAnimationState = 'out';
+    this.getRouterEventSubcribtion();
   }
 
   getRouterEventSubcribtion(): void {
