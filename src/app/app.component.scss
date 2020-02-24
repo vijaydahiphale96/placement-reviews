@@ -60,6 +60,7 @@ $hoverColor: #887c82;
 
   .menu-expantion-container {
     box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+    overflow: hidden;
 
     .expantion-menu-item {
       padding: 15px;
