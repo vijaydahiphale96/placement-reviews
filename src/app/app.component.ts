@@ -1,18 +1,35 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
+import { animate, style, transition, trigger, state } from "@angular/animations";
 import { MainRoutes } from './shared/enums/routes.enum';
 import { Router, NavigationStart, RouterEvent } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CommonObjectService } from './shared/services/common-object.service';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  animations: [
+    trigger('slideInOut', [
+      state('in', style({
+        overflow: 'hidden',
+        height: '*'
+      })),
+      state('out', style({
+        opacity: '0',
+        overflow: 'hidden',
+        height: '0px'
+      })),
+      transition('in => out', animate('400ms ease-in-out')),
+      transition('out => in', animate('400ms ease-in-out'))
+    ])
+  ]
 })
 export class AppComponent implements OnInit, OnDestroy {
 
   MainRoutes = MainRoutes;
   routerEventSubcribtion: Subscription;
+
+  menuAnimationState: string;
 
   constructor(
     private router: Router,
@@ -21,9 +38,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getRouterEventSubcribtion();
+    this.menuAnimationState = 'out';
   }
 
-  getRouterEventSubcribtion() {
+  getRouterEventSubcribtion(): void {
     this.routerEventSubcribtion = this.router.events.subscribe((eventData: RouterEvent) => {
       if (eventData instanceof NavigationStart) {
         this.setActiveMenu(eventData);
@@ -31,7 +49,7 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
-  setActiveMenu(eventData: NavigationStart) {
+  setActiveMenu(eventData: NavigationStart): void {
     const routesArray = eventData.url.split('/');
     if (routesArray.includes(this.MainRoutes.HOME)) {
       this.commonObjectService.currentlySelectedMenu = this.MainRoutes.HOME;
@@ -40,6 +58,10 @@ export class AppComponent implements OnInit, OnDestroy {
     } else if (routesArray.includes(this.MainRoutes.COMPANIES)) {
       this.commonObjectService.currentlySelectedMenu = this.MainRoutes.COMPANIES;
     }
+  }
+
+  changeMenuCollapsibleStatus(): void {
+    this.menuAnimationState = this.menuAnimationState === 'out' ? 'in' : 'out';
   }
 
   ngOnDestroy() {

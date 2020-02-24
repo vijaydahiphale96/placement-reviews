@@ -1,3 +1,5 @@
+$hoverColor: #887c82;
+
 .main-container {
   max-width: 1125px;
   margin: auto;
@@ -16,7 +18,7 @@
 
     .website-title-text {
       font-size: 30px;
-      color: #614840;
+      color: $hoverColor;
       font-weight: 500;
     }
   }
@@ -36,7 +38,7 @@
       }
 
       &:hover {
-        background-color: #614840;
+        background-color: $hoverColor;
       }
     }
 
@@ -56,10 +58,39 @@
     }
   }
 
+  .menu-expantion-container {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+
+    .expantion-menu-item {
+      padding: 15px;
+      border-radius: 5px;
+
+      &:nth-child(even) {
+        background-color: #f5f5f5;
+      }
+
+      &:hover {
+        background-color: $hoverColor;
+        color: white;
+      }
+    }
+
+    .logout-container {
+      align-self: flex-end;
+      padding: 10px 18px;
+      border-radius: 7px;
+
+      &:hover {
+        background-color: $hoverColor;
+        color: white;
+      }
+    }
+  }
+
 
 
 }
 
 .active-menu {
-  background-color: #614840;
+  background-color: $hoverColor;
 }

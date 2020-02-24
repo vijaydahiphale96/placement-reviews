@@ -40,9 +40,30 @@
       </div>
     </a>
 
-    <div class="toolbar-item menu-icon-container cursor-pointer">
+    <div class="toolbar-item menu-icon-container cursor-pointer" (click)="changeMenuCollapsibleStatus()">
       <img class="menu-icon" src="/assets/images/menu-24px.svg" alt="menu-icon">
     </div>
   </div>
+
+  <!-- Menu expantion container -->
+  <div [@slideInOut]="menuAnimationState" class="menu-expantion-container flex-column-container">
+    <div class="expantion-menu-item cursor-pointer">
+      Profile
+    </div>
+    <div class="expantion-menu-item cursor-pointer">
+      Liked Reviews
+    </div>
+    <div class="expantion-menu-item cursor-pointer">
+      Favourite Companies
+    </div>
+    <div class="expantion-menu-item cursor-pointer">
+      Your Contribution
+    </div>
+
+    <div class="logout-container cursor-pointer">
+      Logout
+    </div>
+  </div>
+
   <router-outlet></router-outlet>
 </div>
