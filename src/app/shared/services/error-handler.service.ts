@@ -38,8 +38,11 @@ export class ErrorHandlerService {
     if (errorResponse.status === 401) {
       this.logout();
       this.router.navigateByUrl(MainRoutes.HOME)
+      this.openErrorDialog('Unauthorized !! Try to login again', errorResponse.headers.get(HeaderKeys.DISPLAY_ERROR));
+    } else {
+      this.openErrorDialog('Server was unable to handle the request', errorResponse.headers.get(HeaderKeys.DISPLAY_ERROR));
     }
-    this.openErrorDialog('Server was unable to handle the request', errorResponse.headers.get(HeaderKeys.DISPLAY_ERROR));
+
   }
 
   openErrorDialog(erroMessage: string, displayError: string) {
