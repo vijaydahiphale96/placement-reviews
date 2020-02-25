@@ -8,7 +8,7 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { tap, map } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { ErrorHandlerService } from '../services/error-handler.service';
 import { BaseResponse } from '../models/base-response.model';
 
@@ -20,7 +20,9 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
   ) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    // TODO: Increase Loader Count if SHOW_LOADER = true
+
+    this.errorHandlerService.increaseShowLoaderCount(request);
+
     return next.handle(request).pipe(
       tap({
         next: (successResponse: HttpResponse<BaseResponse>) => {
