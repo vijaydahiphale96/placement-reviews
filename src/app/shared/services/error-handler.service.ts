@@ -25,13 +25,13 @@ export class ErrorHandlerService {
         this.logout();
         this.router.navigateByUrl(MainRoutes.HOME)
       }
-      // TODO: Decrease Loader Count if SHOW_LOADER = True
+      // TODO: Decrease Loader Count if SHOW_LOADER = true
       this.commonMatDialogService.openCommonDialog(successResponse.body.errors[0].message, ModalTypes.ERROR);
     }
   }
 
   handleHttpError(error: HttpErrorResponse) {
-    // TODO: Decrease Loader Count if SHOW_LOADER = True
+    // TODO: Decrease Loader Count if SHOW_LOADER = true
     if (error.status === 401) {
       this.logout();
       this.router.navigateByUrl(MainRoutes.HOME)

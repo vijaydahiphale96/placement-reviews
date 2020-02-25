@@ -45,6 +45,12 @@
     </div>
   </div>
 
+  <!-- Full Screen Loader -->
+  <div class="full-screen-spinner-conatiner" *ngIf="commonObjectService.showLoaderCount">
+    <mat-progress-spinner color="primary" diameter="80" mode="indeterminate">
+    </mat-progress-spinner>
+  </div>
+
   <!-- Menu expantion container -->
   <div [@slideInOut]="menuAnimationState" class="menu-expantion-container flex-column-container">
     <div class="expantion-menu-item cursor-pointer">

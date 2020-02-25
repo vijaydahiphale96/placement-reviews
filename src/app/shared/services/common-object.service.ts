@@ -8,5 +8,7 @@ export class CommonObjectService {
 
   currentlySelectedMenu: string = MainRoutes.DASHBOARD;
 
+  showLoaderCount: number = 0;
+
   constructor() { }
 }

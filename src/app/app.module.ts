@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SharedModule } from './shared/shared.module';
 import { CommonDialogPageComponent } from './shared/modules/common-dialog/common-dialog-page/common-dialog-page.component';
 
@@ -15,7 +16,8 @@ import { CommonDialogPageComponent } from './shared/modules/common-dialog/common
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
+    SharedModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   entryComponents: [

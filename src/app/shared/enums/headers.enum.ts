@@ -7,7 +7,7 @@ export enum HeaderKeys {
 }
 
 export enum HeaderKeyValues {
-  BOOLEAN_TRUE = 'True',
-  BOOLEAN_FALSE = 'False',
+  BOOLEAN_TRUE = 'true',
+  BOOLEAN_FALSE = 'false',
   CONTENT_TYPE_JSON = 'application/json'
 }

@@ -20,7 +20,7 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
   ) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    // TODO: Increase Loader Count if SHOW_LOADER = True
+    // TODO: Increase Loader Count if SHOW_LOADER = true
     return next.handle(request).pipe(
       tap({
         next: (successResponse: HttpResponse<BaseResponse>) => {
