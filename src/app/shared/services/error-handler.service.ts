@@ -29,7 +29,7 @@ export class ErrorHandlerService {
         this.router.navigateByUrl(MainRoutes.HOME)
       }
       this.descreaseShowLoaderCount(successResponse);
-      this.commonMatDialogService.openCommonDialog(successResponse.body.errors[0].message, ModalTypes.ERROR);
+      this.openErrorDialog(successResponse.body.errors[0].message, successResponse.headers.get(HeaderKeys.DISPLAY_ERROR));
     }
   }
 
@@ -39,7 +39,13 @@ export class ErrorHandlerService {
       this.logout();
       this.router.navigateByUrl(MainRoutes.HOME)
     }
-    this.commonMatDialogService.openCommonDialog('Server was unable to handle the request', ModalTypes.ERROR);
+    this.openErrorDialog('Server was unable to handle the request', errorResponse.headers.get(HeaderKeys.DISPLAY_ERROR));
+  }
+
+  openErrorDialog(erroMessage: string, displayError: string) {
+    if (displayError === HeaderKeyValues.BOOLEAN_TRUE) {
+      this.commonMatDialogService.openCommonDialog(erroMessage, ModalTypes.ERROR);
+    }
   }
 
   descreaseShowLoaderCount(response: HttpResponse<BaseResponse> | HttpErrorResponse) {
