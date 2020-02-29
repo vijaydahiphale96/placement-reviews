@@ -24,12 +24,12 @@ export class ErrorHandlerService {
   handleSuccessError(successResponse: HttpResponse<BaseResponse>) {
     if (successResponse.body.hasError) {
       // TODO: Add unauthorize status Code
-      if (successResponse.body.errors[0].code === 0) {
+      if (successResponse.body.errors.code === 0) {
         this.logout();
         this.router.navigateByUrl(MainRoutes.HOME)
       }
       this.descreaseShowLoaderCount(successResponse);
-      this.openErrorDialog(successResponse.body.errors[0].message, successResponse.headers.get(HeaderKeys.DISPLAY_ERROR));
+      this.openErrorDialog(successResponse.body.errors.message, successResponse.headers.get(HeaderKeys.DISPLAY_ERROR));
     }
   }
 

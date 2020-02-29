@@ -1,7 +1,7 @@
 export interface BaseResponse {
   hasError: boolean,
   data: any,
-  errors: Error[]
+  errors: Error
 }
 
 interface Error {
