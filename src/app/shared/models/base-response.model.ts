@@ -1,11 +1,11 @@
 export interface BaseResponse {
   hasError: boolean,
   data: any,
-  errors: Error
+  error: Error
 }
 
 interface Error {
   code: number,
-  tittle: string,
+  title: string,
   message: string
 }
