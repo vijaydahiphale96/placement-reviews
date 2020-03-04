@@ -19,6 +19,7 @@ import { CommonDialogPageComponent } from './shared/modules/common-dialog/common
     MatProgressSpinnerModule
   ],
   providers: [],
+  // TODO: Remove entry Components
   entryComponents: [
     CommonDialogPageComponent
   ],
