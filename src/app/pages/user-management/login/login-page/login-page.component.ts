@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
@@ -7,9 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor() { }
+  loginForm: FormGroup;
+  hidePassword: boolean = true;
+
+  constructor(
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit(): void {
+    this.generateLoginForm();
+  }
+
+  generateLoginForm() {
+    this.loginForm = this.formBuilder.group({
+      emailId: ['', [
+        Validators.required,
+        Validators.email
+      ]],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(5)
+      ]],
+    });
   }
 
 }

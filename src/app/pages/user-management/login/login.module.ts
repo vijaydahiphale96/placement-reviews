@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { LoginRoutingModule } from './login-routing.module';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { MatSharedModule } from 'src/app/shared/mat-shared.module';
+import { MatCommonModule } from 'src/app/shared/mat-common.module';
+import { MatFormsModule } from 'src/app/shared/mat-forms.module';
 
 
 @NgModule({
@@ -11,7 +11,8 @@ import { MatSharedModule } from 'src/app/shared/mat-shared.module';
   imports: [
     CommonModule,
     LoginRoutingModule,
-    MatSharedModule
+    MatCommonModule,
+    MatFormsModule
   ]
 })
 export class LoginModule { }

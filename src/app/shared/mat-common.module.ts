@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 
-
 @NgModule({
   declarations: [],
   imports: [
@@ -14,4 +13,4 @@ import { MatCardModule } from '@angular/material/card';
     MatCardModule
   ]
 })
-export class MatSharedModule { }
+export class MatCommonModule { }

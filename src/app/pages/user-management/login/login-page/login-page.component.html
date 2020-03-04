@@ -1,3 +1,27 @@
 <div class="login-page-container">
-  <mat-card>Simple card</mat-card>
+  <mat-card>
+    <form class="example-form" [formGroup]="loginForm">
+      <div>
+        <mat-form-field appearance="outline" class="text-input-field">
+          <mat-label>Email Id</mat-label>
+          <input matInput placeholder="Name" formControlName="emailId">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline" class="text-input-field">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+          <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hidePassword">
+            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+    </form>
+    <div class="right-side-button">
+      <a>
+        <button mat-flat-button color="primary">Login</button>
+      </a>
+    </div>
+  </mat-card>
 </div>
