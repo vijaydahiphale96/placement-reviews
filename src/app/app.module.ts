@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SharedModule } from './shared/shared.module';
 import { CommonDialogPageComponent } from './shared/modules/common-dialog/common-dialog-page/common-dialog-page.component';
-
 @NgModule({
   declarations: [
     AppComponent

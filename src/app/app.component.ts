@@ -4,6 +4,7 @@ import { MainRoutes } from './shared/enums/routes.enum';
 import { Router, NavigationStart, RouterEvent } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CommonObjectService } from './shared/services/common-object.service';
+import { UserDataService } from './shared/services/user-data.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -31,7 +32,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
-    public commonObjectService: CommonObjectService
+    public commonObjectService: CommonObjectService,
+    public userDataService: UserDataService
   ) { }
 
   ngOnInit() {
@@ -55,6 +57,10 @@ export class AppComponent implements OnInit, OnDestroy {
       this.commonObjectService.currentlySelectedMenu = this.MainRoutes.DASHBOARD;
     } else if (routesArray.includes(this.MainRoutes.COMPANIES)) {
       this.commonObjectService.currentlySelectedMenu = this.MainRoutes.COMPANIES;
+    } else if (routesArray.includes(this.MainRoutes.LOGIN)) {
+      this.commonObjectService.currentlySelectedMenu = this.MainRoutes.LOGIN;
+    } else {
+      this.commonObjectService.currentlySelectedMenu = '';
     }
   }
 

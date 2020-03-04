@@ -34,8 +34,9 @@
 
     <!-- Static Menus -->
     <div class="flex-grow-full"></div>
-    <a class="menu-link" [routerLink]="MainRoutes.COMPANIES">
-      <div class="toolbar-item cursor-pointer">
+    <a class="menu-link" [routerLink]="MainRoutes.LOGIN">
+      <div class="toolbar-item cursor-pointer"
+        [class.active-menu]="commonObjectService.currentlySelectedMenu === MainRoutes.LOGIN">
         Sign In
       </div>
     </a>
@@ -52,7 +53,9 @@
   </div>
 
   <!-- Menu expantion container -->
-  <div [@slideInOut]="menuAnimationState" class="menu-expantion-container flex-column-container">
+  <!-- TODO: remove Not -->
+  <div *ngIf="!userDataService.userId" [@slideInOut]="menuAnimationState"
+    class="menu-expantion-container flex-column-container">
     <div class="expantion-menu-item cursor-pointer">
       Profile
     </div>

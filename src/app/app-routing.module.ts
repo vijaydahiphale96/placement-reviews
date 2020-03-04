@@ -18,6 +18,14 @@ const routes: Routes = [
   {
     path: MainRoutes.COMPANIES,
     loadChildren: () => import('./pages/companies/companies.module').then(m => m.CompaniesModule)
+  },
+  {
+    path: MainRoutes.LOGIN,
+    loadChildren: () => import('./pages/user-management/login/login.module').then(m => m.LoginModule)
+  },
+  {
+    path: MainRoutes.SIGN_UP,
+    loadChildren: () => import('./pages/user-management/sign-up/sign-up.module').then(m => m.SignUpModule)
   }
 ];
 
