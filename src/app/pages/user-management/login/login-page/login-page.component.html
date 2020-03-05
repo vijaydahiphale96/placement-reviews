@@ -1,7 +1,7 @@
 <div class="login-page-container">
   <mat-card>
     <h1 class="text-align-center"> PICT</h1>
-    <form class="example-form" [formGroup]="loginForm">
+    <form class="example-form" [formGroup]="loginForm" (ngSubmit)="login()">
       <div>
         <mat-form-field appearance="outline" class="text-input-field">
           <mat-label>Email Id</mat-label>
@@ -18,12 +18,10 @@
           </button>
         </mat-form-field>
       </div>
+      <div class="right-side-button">
+        <button class="login-button" mat-flat-button color="primary" type="submit">Login</button>
+      </div>
     </form>
-    <div class="right-side-button">
-      <a>
-        <button class="login-button" mat-flat-button color="primary">Login</button>
-      </a>
-    </div>
     <div class="flex-row-container sign-up-button-container">
       <div>
         <span>Forget Password ?</span>

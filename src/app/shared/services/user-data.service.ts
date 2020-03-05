@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { UserCookieData } from '../enums/user-data.enum';
+import { UserLoginCredential } from '../models/user.model';
+import { RestApiService } from './rest-api.service';
+import { environment } from 'src/environments/environment';
+import { BaseResponse } from '../models/base-response.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserDataService {
 
+  baseUrl = environment.baseUrl;
+
   constructor(
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private restApiService: RestApiService
   ) { }
 
   public logout() {
@@ -35,6 +42,16 @@ export class UserDataService {
   }
   public set accessToken(value: string) {
     this.cookieService.set(UserCookieData.ACCESS_TOKEN, value, 365, '/');
+  }
+
+  login(loginData: UserLoginCredential): Promise<BaseResponse> {
+    return this.restApiService.post<BaseResponse>(
+      this.baseUrl.concat('login'),
+      loginData,
+      false,
+      true,
+      true
+    ).toPromise()
   }
 
 }
