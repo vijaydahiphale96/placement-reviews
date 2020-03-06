@@ -46,6 +46,7 @@ export class LoginPageComponent implements OnInit {
       const userData: BaseResponse<AccessToken> = await this.userDataService.login(loginData);
       if (userData && userData.data) {
         this.userDataService.setUserData(userData.data);
+        this.userDataService.userData = userData.data.user;
         this.router.navigate([MainRoutes.DASHBOARD]);
       }
     }
