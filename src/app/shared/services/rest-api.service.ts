@@ -22,7 +22,6 @@ export class RestApiService {
   ): Observable<T> {
 
     const commonHttpHeaderOptions = this.getHttpHeaders(isAuthorizationRequired, showLoader, displayError)
-    console.log(`${commonHttpHeaderOptions}`)
     return this.http.post<T>(url, postparams, commonHttpHeaderOptions);
   }
 
