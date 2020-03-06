@@ -46,7 +46,7 @@ export class UserDataService {
 
   login(loginData: UserLoginCredential): Promise<BaseResponse> {
     return this.restApiService.post<BaseResponse>(
-      this.baseUrl.concat('login'),
+      this.baseUrl.concat('/login'),
       loginData,
       false,
       true,

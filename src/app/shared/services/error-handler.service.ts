@@ -21,26 +21,26 @@ export class ErrorHandlerService {
     private commonMatDialogService: CommonMatDialogService
   ) { }
 
-  handleSuccessError(successResponse: HttpResponse<BaseResponse>) {
+  handleSuccessError(request: HttpRequest<unknown>, successResponse: HttpResponse<BaseResponse>) {
     if (successResponse.body.hasError) {
       // TODO: Add unauthorize status Code
       if (successResponse.body.error.code === 0) {
         this.logout();
         this.router.navigateByUrl(MainRoutes.HOME)
       }
-      this.descreaseShowLoaderCount(successResponse);
-      this.openErrorDialog(successResponse.body.error.message, successResponse.headers.get(HeaderKeys.DISPLAY_ERROR));
+      this.openErrorDialog(successResponse.body.error.message, request.headers.get(HeaderKeys.DISPLAY_ERROR));
     }
+    this.descreaseShowLoaderCount(request);
   }
 
-  handleHttpError(errorResponse: HttpErrorResponse) {
-    this.descreaseShowLoaderCount(errorResponse);
+  handleHttpError(request: HttpRequest<unknown>, errorResponse: HttpErrorResponse) {
+    this.descreaseShowLoaderCount(request);
     if (errorResponse.status === 401) {
       this.logout();
       this.router.navigateByUrl(MainRoutes.HOME)
-      this.openErrorDialog('Unauthorized !! Try to login again', errorResponse.headers.get(HeaderKeys.DISPLAY_ERROR));
+      this.openErrorDialog('Unauthorized !! Try to login again', request.headers.get(HeaderKeys.DISPLAY_ERROR));
     } else {
-      this.openErrorDialog('Server was unable to handle the request', errorResponse.headers.get(HeaderKeys.DISPLAY_ERROR));
+      this.openErrorDialog('Server was unable to handle the request', request.headers.get(HeaderKeys.DISPLAY_ERROR));
     }
 
   }
@@ -51,8 +51,8 @@ export class ErrorHandlerService {
     }
   }
 
-  descreaseShowLoaderCount(response: HttpResponse<BaseResponse> | HttpErrorResponse) {
-    if (response.headers.get(HeaderKeys.SHOW_LOADER) === HeaderKeyValues.BOOLEAN_TRUE) {
+  descreaseShowLoaderCount(request: HttpRequest<unknown>) {
+    if (request.headers.get(HeaderKeys.SHOW_LOADER) === HeaderKeyValues.BOOLEAN_TRUE) {
       this.commonObjectService.showLoaderCount--;
     }
   }

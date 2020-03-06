@@ -27,12 +27,12 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
       tap({
         next: (successResponse: HttpResponse<BaseResponse>) => {
           if (successResponse instanceof HttpResponse) {
-            this.errorHandlerService.handleSuccessError(successResponse);
+            this.errorHandlerService.handleSuccessError(request, successResponse);
           }
         },
         error: (error: HttpErrorResponse) => {
           if (error instanceof HttpErrorResponse) {
-            this.errorHandlerService.handleHttpError(error);
+            this.errorHandlerService.handleHttpError(request, error);
           }
         },
         complete: () => {
