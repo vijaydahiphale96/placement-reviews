@@ -7,7 +7,7 @@ import { MainRoutes } from '../enums/routes.enum';
 @Injectable({
   providedIn: 'root'
 })
-export class IsAdminGuard implements CanActivate {
+export class IsSuperAdminGuard implements CanActivate {
 
   constructor(private router: Router,
     private userDataService: UserDataService
@@ -16,7 +16,7 @@ export class IsAdminGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (this.userDataService?.roleId === 2) {
+    if (this.userDataService?.roleId === 1) {
       return true
     } else {
       this.router.navigate([MainRoutes.DASHBOARD]);

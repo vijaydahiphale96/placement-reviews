@@ -3,6 +3,8 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { UserLoginCredential, AccessToken } from 'src/app/shared/models/user.model';
 import { UserDataService } from 'src/app/shared/services/user-data.service';
 import { BaseResponse } from 'src/app/shared/models/base-response.model';
+import { MainRoutes } from 'src/app/shared/enums/routes.enum';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -16,6 +18,7 @@ export class LoginPageComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private router: Router,
     private userDataService: UserDataService
   ) { }
 
@@ -42,7 +45,8 @@ export class LoginPageComponent implements OnInit {
         new UserLoginCredential(this.loginForm.controls.emailId.value, this.loginForm.controls.password.value);
       const userData: BaseResponse<AccessToken> = await this.userDataService.login(loginData);
       if (userData && userData.data) {
-        console.log('userData', userData.data);
+        this.userDataService.setUserData(userData.data);
+        this.router.navigate([MainRoutes.DASHBOARD]);
       }
     }
   }

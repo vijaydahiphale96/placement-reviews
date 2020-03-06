@@ -34,14 +34,15 @@
 
     <!-- Static Menus -->
     <div class="flex-grow-full"></div>
-    <a class="menu-link" [routerLink]="MainRoutes.LOGIN">
+    <a class="menu-link" [routerLink]="MainRoutes.LOGIN" *ngIf="!userDataService.accessToken">
       <div class="toolbar-item cursor-pointer"
         [class.active-menu]="commonObjectService.currentlySelectedMenu === MainRoutes.LOGIN">
         Sign In
       </div>
     </a>
 
-    <div class="toolbar-item menu-icon-container cursor-pointer" (click)="changeMenuCollapsibleStatus()">
+    <div *ngIf="userDataService.accessToken" class="toolbar-item menu-icon-container cursor-pointer"
+      (click)="changeMenuCollapsibleStatus()">
       <img class="menu-icon" src="/assets/images/menu-24px.svg" alt="menu-icon">
     </div>
   </div>
@@ -54,7 +55,7 @@
 
   <!-- Menu expantion container -->
   <!-- TODO: remove Not -->
-  <div *ngIf="!userDataService.userId" [@slideInOut]="menuAnimationState"
+  <div *ngIf="userDataService.accessToken" [@slideInOut]="menuAnimationState"
     class="menu-expantion-container flex-column-container">
     <div class="expantion-menu-item cursor-pointer">
       Profile
@@ -69,9 +70,9 @@
       Your Contribution
     </div>
 
-    <div class="logout-container cursor-pointer">
+    <a class="logout-container cursor-pointer" (click)="logout()">
       Logout
-    </div>
+    </a>
   </div>
 
   <router-outlet></router-outlet>

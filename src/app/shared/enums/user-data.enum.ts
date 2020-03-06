@@ -1,5 +1,5 @@
 export enum UserCookieData {
   USER_ID = 'userId',
-  IS_ADMIN = 'isAdmin',
+  ROLE_ID = 'roleId',
   ACCESS_TOKEN = 'accessToken'
 }

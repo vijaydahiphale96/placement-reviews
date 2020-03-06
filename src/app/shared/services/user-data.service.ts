@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { UserCookieData } from '../enums/user-data.enum';
-import { UserLoginCredential, AccessToken } from '../models/user.model';
+import { UserLoginCredential, AccessToken, UserData } from '../models/user.model';
 import { RestApiService } from './rest-api.service';
 import { environment } from 'src/environments/environment';
 import { BaseResponse } from '../models/base-response.model';
@@ -12,6 +12,7 @@ import { BaseResponse } from '../models/base-response.model';
 export class UserDataService {
 
   baseUrl = environment.baseUrl;
+  userData: UserData;
 
   constructor(
     private cookieService: CookieService,
@@ -30,11 +31,11 @@ export class UserDataService {
     this.cookieService.set(UserCookieData.USER_ID, value.toString(), 365, '/');
   }
 
-  public get isAdmin(): boolean {
-    return (this.cookieService.get(UserCookieData.IS_ADMIN) === 'true');
+  public get roleId(): number {
+    return parseInt(this.cookieService.get(UserCookieData.ROLE_ID), 10);
   }
-  public set isAdmin(value: boolean) {
-    this.cookieService.set(UserCookieData.IS_ADMIN, value.toString(), 365, '/');
+  public set roleId(value: number) {
+    this.cookieService.set(UserCookieData.ROLE_ID, value.toString(), 365, '/');
   }
 
   public get accessToken(): string {
@@ -52,6 +53,12 @@ export class UserDataService {
       true,
       true
     ).toPromise()
+  }
+
+  setUserData(userData: AccessToken) {
+    this.userId = userData.user.userId;
+    this.roleId = userData.user.roleId;
+    this.accessToken = userData.accessToken;
   }
 
 }
