@@ -35,7 +35,7 @@ export class ErrorHandlerService {
 
   handleHttpError(request: HttpRequest<unknown>, errorResponse: HttpErrorResponse) {
     this.descreaseShowLoaderCount(request);
-    if (errorResponse.status === 401) {
+    if (errorResponse?.status === 401) {
       this.logout();
       this.router.navigateByUrl(MainRoutes.HOME)
       this.openErrorDialog('Unauthorized !! Try to login again', request.headers.get(HeaderKeys.DISPLAY_ERROR));
