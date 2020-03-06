@@ -25,7 +25,7 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(
       tap({
-        next: (successResponse: HttpResponse<BaseResponse>) => {
+        next: (successResponse: HttpResponse<BaseResponse<any>>) => {
           if (successResponse instanceof HttpResponse) {
             this.errorHandlerService.handleSuccessError(request, successResponse);
           }

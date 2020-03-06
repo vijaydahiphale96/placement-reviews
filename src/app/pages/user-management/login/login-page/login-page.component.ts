@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { UserLoginCredential } from 'src/app/shared/models/user.model';
+import { UserLoginCredential, AccessToken } from 'src/app/shared/models/user.model';
 import { UserDataService } from 'src/app/shared/services/user-data.service';
 import { BaseResponse } from 'src/app/shared/models/base-response.model';
 
@@ -40,7 +40,7 @@ export class LoginPageComponent implements OnInit {
     if (this.loginForm.valid) {
       const loginData: UserLoginCredential =
         new UserLoginCredential(this.loginForm.controls.emailId.value, this.loginForm.controls.password.value);
-      const userData: BaseResponse = await this.userDataService.login(loginData);
+      const userData: BaseResponse<AccessToken> = await this.userDataService.login(loginData);
       if (userData && userData.data) {
         console.log('userData', userData.data);
       }

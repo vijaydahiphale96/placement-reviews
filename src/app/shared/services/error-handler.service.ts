@@ -21,7 +21,7 @@ export class ErrorHandlerService {
     private commonMatDialogService: CommonMatDialogService
   ) { }
 
-  handleSuccessError(request: HttpRequest<unknown>, successResponse: HttpResponse<BaseResponse>) {
+  handleSuccessError(request: HttpRequest<unknown>, successResponse: HttpResponse<BaseResponse<any>>) {
     if (successResponse.body.hasError) {
       // TODO: Add unauthorize status Code
       if (successResponse.body.error.code === 0) {

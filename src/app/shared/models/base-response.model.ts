@@ -1,6 +1,6 @@
-export interface BaseResponse {
+export interface BaseResponse<T> {
   hasError: boolean,
-  data: any,
+  data: T,
   error: Error
 }
 
