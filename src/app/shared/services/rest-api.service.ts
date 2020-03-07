@@ -46,6 +46,16 @@ export class RestApiService {
     return this.http.get<T>(url, commonHttpHeaderOptions);
   }
 
+  delete<T>(
+    url: string,
+    isAuthorizationRequired: boolean,
+    showLoader: boolean,
+    displayError: boolean,
+  ): Observable<T> {
+    const commonHttpHeaderOptions = this.getHttpHeaders(isAuthorizationRequired, showLoader, displayError)
+    return this.http.delete<T>(url, commonHttpHeaderOptions);
+  }
+
   getHttpHeaders(isAuthorizationRequired: boolean, showLoader: boolean, displayError: boolean) {
     return {
       headers: new HttpHeaders({

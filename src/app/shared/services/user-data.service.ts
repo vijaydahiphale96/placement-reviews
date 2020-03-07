@@ -19,11 +19,6 @@ export class UserDataService {
     private restApiService: RestApiService
   ) { }
 
-  public logout() {
-    this.cookieService.delete(UserCookieData.ACCESS_TOKEN, ' / ');
-    this.cookieService.deleteAll();
-  }
-
   public get userId(): number {
     return parseInt(this.cookieService.get(UserCookieData.USER_ID), 10);
   }
@@ -52,13 +47,27 @@ export class UserDataService {
       false,
       true,
       true
-    ).toPromise()
+    ).toPromise();
   }
 
   setUserData(userData: AccessToken) {
     this.userId = userData.user.userId;
     this.roleId = userData.user.roleId;
     this.accessToken = userData.accessToken;
+  }
+
+  public logout() {
+    return this.restApiService.delete<BaseResponse<string>>(
+      this.baseUrl.concat('/logout'),
+      true,
+      true,
+      false
+    ).toPromise();
+  }
+
+  clearUserCookieData() {
+    this.cookieService.delete(UserCookieData.ACCESS_TOKEN, ' / ');
+    this.cookieService.deleteAll();
   }
 
 }

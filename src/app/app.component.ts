@@ -75,8 +75,9 @@ export class AppComponent implements OnInit, OnDestroy {
     this.menuAnimationState = this.menuAnimationState === 'out' ? 'in' : 'out';
   }
 
-  logout() {
-    this.userDataService.logout();
+  async logout() {
+    await this.userDataService.logout();
+    this.userDataService.clearUserCookieData();
     this.changeMenuCollapsibleStatus();
     this.router.navigate([MainRoutes.HOME]);
   }

@@ -25,7 +25,7 @@ export class ErrorHandlerService {
     if (successResponse.body.hasError) {
       // TODO: Add unauthorize status Code
       if (successResponse.body.error.code === 0) {
-        this.logout();
+        this.userDataService.clearUserCookieData();
         this.router.navigateByUrl(MainRoutes.HOME)
       }
       this.openErrorDialog(successResponse.body.error.message, request.headers.get(HeaderKeys.DISPLAY_ERROR));
@@ -36,7 +36,7 @@ export class ErrorHandlerService {
   handleHttpError(request: HttpRequest<unknown>, errorResponse: HttpErrorResponse) {
     this.descreaseShowLoaderCount(request);
     if (errorResponse?.status === 401) {
-      this.logout();
+      this.userDataService.clearUserCookieData();
       this.router.navigateByUrl(MainRoutes.HOME)
       this.openErrorDialog('Unauthorized !! Try to login again', request.headers.get(HeaderKeys.DISPLAY_ERROR));
     } else {
@@ -61,9 +61,5 @@ export class ErrorHandlerService {
     if (request.headers.get(HeaderKeys.SHOW_LOADER) === HeaderKeyValues.BOOLEAN_TRUE) {
       this.commonObjectService.showLoaderCount++;
     }
-  }
-
-  logout() {
-    this.userDataService.logout();
   }
 }
