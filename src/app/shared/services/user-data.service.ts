@@ -14,6 +14,9 @@ export class UserDataService {
   baseUrl = environment.baseUrl;
   userData: UserData;
 
+  COOKIE_EXPIRE_DAYS: number = 90;
+  COOKIE_BASE_PATH: string = '/';
+
   constructor(
     private cookieService: CookieService,
     private restApiService: RestApiService
@@ -23,24 +26,24 @@ export class UserDataService {
     return parseInt(this.cookieService.get(UserCookieData.USER_ID), 10);
   }
   public set userId(value: number) {
-    this.cookieService.set(UserCookieData.USER_ID, value.toString(), 365, '/');
+    this.cookieService.set(UserCookieData.USER_ID, value.toString(), this.COOKIE_EXPIRE_DAYS, this.COOKIE_BASE_PATH);
   }
 
   public get roleId(): number {
     return parseInt(this.cookieService.get(UserCookieData.ROLE_ID), 10);
   }
   public set roleId(value: number) {
-    this.cookieService.set(UserCookieData.ROLE_ID, value.toString(), 365, '/');
+    this.cookieService.set(UserCookieData.ROLE_ID, value.toString(), this.COOKIE_EXPIRE_DAYS, this.COOKIE_BASE_PATH);
   }
 
   public get accessToken(): string {
     return this.cookieService.get(UserCookieData.ACCESS_TOKEN);
   }
   public set accessToken(value: string) {
-    this.cookieService.set(UserCookieData.ACCESS_TOKEN, value, 365, '/');
+    this.cookieService.set(UserCookieData.ACCESS_TOKEN, value, this.COOKIE_EXPIRE_DAYS, this.COOKIE_BASE_PATH);
   }
 
-  login(loginData: UserLoginCredential): Promise<BaseResponse<AccessToken>> {
+  public login(loginData: UserLoginCredential): Promise<BaseResponse<AccessToken>> {
     return this.restApiService.post<BaseResponse<AccessToken>>(
       this.baseUrl.concat('/login'),
       loginData,
@@ -48,12 +51,6 @@ export class UserDataService {
       true,
       true
     ).toPromise();
-  }
-
-  setUserData(userData: AccessToken) {
-    this.userId = userData.user.userId;
-    this.roleId = userData.user.roleId;
-    this.accessToken = userData.accessToken;
   }
 
   public logout() {
@@ -65,7 +62,13 @@ export class UserDataService {
     ).toPromise();
   }
 
-  clearUserCookieData() {
+  public setUserData(userData: AccessToken) {
+    this.userId = userData.user.userId;
+    this.roleId = userData.user.roleId;
+    this.accessToken = userData.accessToken;
+  }
+
+  public clearUserCookieData() {
     this.cookieService.delete(UserCookieData.ACCESS_TOKEN, ' / ');
     this.cookieService.deleteAll();
   }
