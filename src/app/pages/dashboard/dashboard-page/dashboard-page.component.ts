@@ -10,6 +10,11 @@ export class DashboardPageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.getPopulorCompanies();
+  }
+
+  getPopulorCompanies() {
+
   }
 
 }

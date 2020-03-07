@@ -1,1 +1,12 @@
-<p>dashboard-page works!</p>
+<div class="dashboard-container flex-row-container">
+  <div class="dashboard-box-item">
+    <app-box-common-layout [boxTittle]="'Companies'">
+      <app-company-list-item></app-company-list-item>
+    </app-box-common-layout>
+  </div>
+  <div class="dashboard-box-item">
+    <app-box-common-layout [boxTittle]="'Reviews'">
+      <app-review-list-item></app-review-list-item>
+    </app-box-common-layout>
+  </div>
+</div>

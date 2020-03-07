@@ -1,0 +1,16 @@
+// .dashboard-container {
+//   @media only screen and (min-width: 820px) {
+//     column-count: 2;
+//   }
+// }
+
+.dashboard-container {
+  flex-wrap: wrap;
+
+  .dashboard-box-item {
+    padding: 10px 20px;
+    min-width: 350px;
+    max-width: 500xp;
+    flex-grow: 1;
+  }
+}
