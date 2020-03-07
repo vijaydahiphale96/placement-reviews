@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { UserLoginCredential, AccessToken } from 'src/app/shared/models/user.model';
+import { UserLoginCredential } from 'src/app/shared/models/user.model';
 import { UserDataService } from 'src/app/shared/services/user-data.service';
 import { BaseResponse } from 'src/app/shared/models/base-response.model';
 import { MainRoutes } from 'src/app/shared/enums/routes.enum';
 import { Router } from '@angular/router';
+import { AccessToken } from 'src/app/shared/models/access-token.model';
 
 @Component({
   selector: 'app-login-page',

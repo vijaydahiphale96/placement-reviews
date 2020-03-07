@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { UserCookieData } from '../enums/user-data.enum';
-import { UserLoginCredential, AccessToken, UserData } from '../models/user.model';
+import { UserLoginCredential, UserData } from '../models/user.model';
 import { RestApiService } from './rest-api.service';
 import { environment } from 'src/environments/environment';
 import { BaseResponse } from '../models/base-response.model';
+import { AccessToken } from '../models/access-token.model';
 
 @Injectable({
   providedIn: 'root'

@@ -8,13 +8,6 @@ export class UserLoginCredential {
   }
 }
 
-export interface AccessToken {
-  accessToken: string;
-  accessTokenId: string;
-  createdAt: string;
-  user: UserData;
-}
-
 export interface UserData {
   userId: number;
   firstName: string;

@@ -1,12 +1,16 @@
 <div class="dashboard-container flex-row-container">
   <div class="dashboard-box-item">
     <app-box-common-layout [boxTittle]="'Companies'">
-      <app-company-list-item></app-company-list-item>
+      <ng-container *ngFor="let company of popularCompanies">
+        <app-company-list-item [companyData]="company"></app-company-list-item>
+      </ng-container>
     </app-box-common-layout>
   </div>
   <div class="dashboard-box-item">
     <app-box-common-layout [boxTittle]="'Reviews'">
-      <app-review-list-item></app-review-list-item>
+      <ng-container *ngFor="let review of mostLikedReviews">
+        <app-review-list-item [reviewData]="review"></app-review-list-item>
+      </ng-container>
     </app-box-common-layout>
   </div>
 </div>
