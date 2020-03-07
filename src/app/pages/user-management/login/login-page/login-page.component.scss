@@ -1,0 +1,16 @@
+.login-page-container {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+
+  .login-button {
+    width: 100%;
+  }
+
+  .sign-up-button-container {
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+}

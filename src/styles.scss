@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.flex-row-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-column-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-grow-full {
+  flex-grow: 1;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.text-input-field {
+  min-width: 320px;
+}
+
+.right-side-button {
+  text-align: right;
+}
+
+.text-align-center {
+  text-align: center;
+}
