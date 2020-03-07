@@ -5,6 +5,7 @@ import { Router, NavigationStart, RouterEvent } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CommonObjectService } from './shared/services/common-object.service';
 import { UserDataService } from './shared/services/user-data.service';
+import { filter } from 'rxjs/operators';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -42,11 +43,11 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   getRouterEventSubcribtion(): void {
-    this.routerEventSubcribtion = this.router.events.subscribe((eventData: RouterEvent) => {
-      if (eventData instanceof NavigationStart) {
-        this.setActiveMenu(eventData);
-      }
-    });
+    this.routerEventSubcribtion = this.router.events.pipe(
+      filter(event => event instanceof NavigationStart)).subscribe(
+        (eventData: RouterEvent) => {
+          this.setActiveMenu(eventData);
+        });
   }
 
   setActiveMenu(eventData: NavigationStart): void {
@@ -59,8 +60,14 @@ export class AppComponent implements OnInit, OnDestroy {
       this.commonObjectService.currentlySelectedMenu = this.MainRoutes.COMPANIES;
     } else if (routesArray.includes(this.MainRoutes.LOGIN)) {
       this.commonObjectService.currentlySelectedMenu = this.MainRoutes.LOGIN;
+    } else if (eventData.url === '/') {
+      if (this.userDataService.accessToken) {
+        this.commonObjectService.currentlySelectedMenu = this.MainRoutes.DASHBOARD;
+      } else {
+        this.commonObjectService.currentlySelectedMenu = this.MainRoutes.HOME;
+      }
     } else {
-      this.commonObjectService.currentlySelectedMenu = '';
+      this.commonObjectService.currentlySelectedMenu = ''
     }
   }
 
