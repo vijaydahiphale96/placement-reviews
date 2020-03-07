@@ -41,12 +41,16 @@ body {
   text-align: center;
 }
 
-.list-item {
-  height: unset !important;
-  padding: 5px !important;
-  ;
+.mat-custom-list {
+  padding-top: 0px !important;
 
-  &:hover {
-    background-color: #d8d8d8;
+  .mat-list-custom-item {
+    height: unset !important;
+    padding: 5px !important;
+    width: unset !important;
+
+    &:hover {
+      background-color: #e8e5e580;
+    }
   }
 }

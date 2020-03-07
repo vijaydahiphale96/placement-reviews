@@ -1,5 +1,5 @@
-<mat-list>
-  <mat-list-item *ngFor="let company of companies" class="cursor-pointer list-item">
+<mat-list class="mat-custom-list">
+  <mat-list-item *ngFor="let company of companies" class="cursor-pointer list-item mat-list-custom-item">
     <mat-icon mat-list-icon>folder</mat-icon>
     <h4 mat-line>{{company.companyName}}</h4>
     <div mat-line class="favorite-line-container"> <i style="font-size: 15px;" class="material-icons">favorite</i>
