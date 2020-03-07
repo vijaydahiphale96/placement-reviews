@@ -70,9 +70,11 @@
       Your Contribution
     </div>
 
-    <a class="logout-container cursor-pointer" (click)="logout()">
-      Logout
-    </a>
+    <div class="logout-button-container">
+      <a mat-stroked-button (click)="logout()" color="primary">
+        Logout
+      </a>
+    </div>
   </div>
 
   <router-outlet></router-outlet>
