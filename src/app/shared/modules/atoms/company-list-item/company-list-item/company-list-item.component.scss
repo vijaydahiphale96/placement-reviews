@@ -1,0 +1,9 @@
+.favorite-line-container {
+  display: flex !important;
+  align-items: center !important;
+
+  .favorite-count {
+    margin-top: 2px;
+    padding: 0px 3px;
+  }
+}

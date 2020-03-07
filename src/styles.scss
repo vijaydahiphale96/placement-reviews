@@ -40,3 +40,13 @@ body {
 .text-align-center {
   text-align: center;
 }
+
+.list-item {
+  height: unset !important;
+  padding: 5px !important;
+  ;
+
+  &:hover {
+    background-color: #d8d8d8;
+  }
+}

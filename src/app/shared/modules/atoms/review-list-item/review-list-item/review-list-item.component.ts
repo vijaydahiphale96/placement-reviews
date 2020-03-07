@@ -8,7 +8,7 @@ import { Review } from 'src/app/shared/models/review.model';
 })
 export class ReviewListItemComponent implements OnInit {
 
-  @Input() reviewData: Review;
+  @Input() reviews: Review[];
 
   constructor() { }
 

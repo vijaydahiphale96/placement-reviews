@@ -8,7 +8,7 @@ import { Company } from 'src/app/shared/models/company.model';
 })
 export class CompanyListItemComponent implements OnInit {
 
-  @Input() companyData: Company;
+  @Input() companies: Company[];
 
   constructor() { }
 
