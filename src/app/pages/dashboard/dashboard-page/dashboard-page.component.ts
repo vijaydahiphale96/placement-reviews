@@ -19,11 +19,12 @@ export class DashboardPageComponent implements OnInit {
 
   constructor(
     private restApiService: RestApiService
-  ) { }
-
-  ngOnInit(): void {
+  ) {
     this.getPopularCompanies();
     this.getMostLikedReviews();
+  }
+
+  ngOnInit(): void {
   }
 
   async getPopularCompanies() {
