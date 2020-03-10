@@ -20,6 +20,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/companies/companies.module').then(m => m.CompaniesModule)
   },
   {
+    path: MainRoutes.WRITE_REVIEW,
+    loadChildren: () => import('./pages/write-review/write-review.module').then(m => m.WriteReviewModule)
+  },
+  {
     path: MainRoutes.LOGIN,
     loadChildren: () => import('./pages/user-management/login/login.module').then(m => m.LoginModule)
   },

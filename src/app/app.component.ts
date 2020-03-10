@@ -60,6 +60,8 @@ export class AppComponent implements OnInit, OnDestroy {
       this.commonObjectService.currentlySelectedMenu = this.MainRoutes.COMPANIES;
     } else if (routesArray.includes(this.MainRoutes.LOGIN)) {
       this.commonObjectService.currentlySelectedMenu = this.MainRoutes.LOGIN;
+    } else if (routesArray.includes(this.MainRoutes.WRITE_REVIEW)) {
+      this.commonObjectService.currentlySelectedMenu = this.MainRoutes.WRITE_REVIEW;
     } else if (eventData.url === '/') {
       if (this.userDataService.accessToken) {
         this.commonObjectService.currentlySelectedMenu = this.MainRoutes.DASHBOARD;

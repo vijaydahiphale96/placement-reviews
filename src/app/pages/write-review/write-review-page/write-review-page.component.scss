@@ -1,0 +1,7 @@
+.write-review-page-container {
+  margin: 20px;
+
+  @media only screen and (max-width: 500px) {
+    margin: 20px 5px;
+  }
+}

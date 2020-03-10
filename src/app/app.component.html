@@ -10,14 +10,14 @@
   <div class="toolbar-container flex-row-container">
 
     <!-- To Do : Change to Dynamic Object -->
-    <a class="menu-link" [routerLink]="MainRoutes.HOME">
+    <a *ngIf="!userDataService.accessToken" class="menu-link" [routerLink]="MainRoutes.HOME">
       <div class="toolbar-item cursor-pointer"
         [class.active-menu]="commonObjectService.currentlySelectedMenu === MainRoutes.HOME">
         Home
       </div>
     </a>
 
-    <a class="menu-link" [routerLink]="MainRoutes.DASHBOARD">
+    <a *ngIf="userDataService.accessToken" class="menu-link" [routerLink]="MainRoutes.DASHBOARD">
       <div class="toolbar-item cursor-pointer"
         [class.active-menu]="commonObjectService.currentlySelectedMenu === MainRoutes.DASHBOARD">
         Dashboard
@@ -28,6 +28,13 @@
       <div class="toolbar-item cursor-pointer"
         [class.active-menu]="commonObjectService.currentlySelectedMenu === MainRoutes.COMPANIES">
         Campanies
+      </div>
+    </a>
+
+    <a class="menu-link" [routerLink]="MainRoutes.WRITE_REVIEW">
+      <div class="toolbar-item cursor-pointer"
+        [class.active-menu]="commonObjectService.currentlySelectedMenu === MainRoutes.WRITE_REVIEW">
+        Write Review
       </div>
     </a>
 
