@@ -8,7 +8,11 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 })
 export class WriteReviewPageComponent implements OnInit {
 
-  public Editor = ClassicEditor;
+  public EDITOR = ClassicEditor;
+  public CKEDITOR_CONFIG = {
+    // tslint:disable-next-line:max-line-length
+    toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|', 'indent', 'outdent', '|', 'blockQuote', 'insertTable', 'undo', 'redo']
+  };
 
   constructor() { }
 
