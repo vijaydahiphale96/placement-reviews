@@ -5,7 +5,7 @@ import { WriteReviewRoutingModule } from './write-review-routing.module';
 import { WriteReviewPageComponent } from './write-review-page/write-review-page.component';
 import { MatFormsModule } from 'src/app/shared/mat-forms.module';
 import { BoxCommonLayoutModule } from 'src/app/shared/modules/atoms/box-common-layout/box-common-layout.module';
-import { CKEditorModule } from 'ckeditor4-angular';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [WriteReviewPageComponent],
