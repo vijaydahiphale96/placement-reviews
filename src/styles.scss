@@ -41,8 +41,23 @@ body {
   text-align: center;
 }
 
-.mat-custom-list {
-  padding-top: 0px !important;
+.card-container-top-border {
+  background: linear-gradient(0deg, #30a8d4, #65c1e2);
+  height: 10px;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.card-title {
+  font-size: 24px;
+  padding: 15px 15px 12px;
+  font-weight: 500;
+}
+
+.blue-divider {
+  border-color: #65c1e2;
+}
+
+.dashboard-card-container {
 
   .mat-list-custom-item {
     height: unset !important;
