@@ -1,5 +1,23 @@
 <div class="write-review-page-container">
   <app-box-common-layout [boxTittle]="'Write a Company Review'">
+    <form [formGroup]="reviewFrom" style="padding: 5px;">
+      <mat-form-field appearance="outline" class="review-form-field">
+        <mat-label>Company</mat-label>
+        <mat-select formControlName="companyId" placeholder="Job Type">
+          <mat-option *ngFor="let status of PLACEMENT_STATUS" [value]="status">
+            {{ status }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="review-form-field">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="placementStatus" placeholder="Job Type">
+          <mat-option *ngFor="let status of PLACEMENT_STATUS" [value]="status">
+            {{ status }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
     <ckeditor [editor]="EDITOR" [config]="CKEDITOR_CONFIG" data="<p>Hello, world!</p>"></ckeditor>
   </app-box-common-layout>
 </div>

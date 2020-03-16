@@ -69,7 +69,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.commonObjectService.currentlySelectedMenu = this.MainRoutes.HOME;
       }
     } else {
-      this.commonObjectService.currentlySelectedMenu = ''
+      this.commonObjectService.currentlySelectedMenu = '';
     }
   }
 
@@ -78,7 +78,10 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   async logout() {
-    await this.userDataService.logout();
+    try {
+      await this.userDataService.logout();
+    } catch (error) {
+    }
     this.userDataService.clearUserCookieData();
     this.changeMenuCollapsibleStatus();
     this.router.navigate([MainRoutes.HOME]);

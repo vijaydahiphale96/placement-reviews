@@ -1,6 +1,11 @@
 .write-review-page-container {
   margin: 20px;
 
+  .review-form-field {
+    width: 100%;
+    display: block;
+  }
+
   @media only screen and (max-width: 500px) {
     margin: 20px 5px;
   }
